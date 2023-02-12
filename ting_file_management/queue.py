@@ -16,9 +16,9 @@ class Queue(AbstractQueue):
         return value
 
     def search(self, index: int):
-        if len(self.queue) > index < 0:
-            raise IndexError()
-        return self.queue[index]
+        if 0 <= index < len(self.queue):
+            return self.queue[index]
+        raise IndexError("Index out of range")
 
     def is_empty(self):
         return not bool(len(self.queue))
