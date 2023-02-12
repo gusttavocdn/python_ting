@@ -7,8 +7,10 @@ def exists_word(word: str, instance: Queue):
     for i in range(len(instance.queue)):
         file = instance.queue[i]["nome_do_arquivo"]
         occurrences = [
-            {"linha": instance.queue[i]["linhas_do_arquivo"].index(line) + 1}
-            for line in instance.queue[i]["linhas_do_arquivo"]
+            {
+                "linha": i + 1,
+            }
+            for i, line in enumerate(instance.queue[i]["linhas_do_arquivo"])
             if word.lower() in line.lower()
         ]
         if occurrences:
@@ -29,8 +31,11 @@ def search_by_word(word: str, instance: Queue):
     for i in range(len(instance.queue)):
         file = instance.queue[i]["nome_do_arquivo"]
         occurrences = [
-            {"linha": instance.queue[i]["linhas_do_arquivo"].index(line) + 1}
-            for line in instance.queue[i]["linhas_do_arquivo"]
+            {
+                "linha": i + 1,
+                "conteudo": line
+            }
+            for i, line in enumerate(instance.queue[i]["linhas_do_arquivo"])
             if word.lower() in line.lower()
         ]
         if occurrences:
