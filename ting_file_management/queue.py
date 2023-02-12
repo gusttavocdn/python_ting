@@ -20,6 +20,9 @@ class Queue(AbstractQueue):
             raise IndexError()
         return self.queue[index]
 
+    def is_empty(self):
+        return not bool(len(self.queue))
+
     def __str__(self):
         str_items = ""
         for i in range(len(self.queue)):
